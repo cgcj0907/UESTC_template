@@ -1,0 +1,153 @@
+% 综设报告:report|课程论文:course|学士论文:bachelor|硕士论文:master|博士论文:doctor
+\documentclass[master]{thesis-uestc}
+
+% =====================================================
+% 修复 Pandoc 列表 \tightlist 未定义错误
+% =====================================================
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}%
+  \setlength{\parskip}{0pt}%
+}
+
+% =====================================================
+% Pandoc 代码块兼容支持（Shaded / Highlighting）
+% =====================================================
+\usepackage{color}
+\usepackage{fancyvrb}
+\usepackage{framed}
+\usepackage{xcolor}
+
+% 定义代码块背景颜色
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+% 定义 Shaded 环境（代码块背景）
+\makeatletter
+\@ifundefined{Shaded}{%
+  \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+}{}
+\makeatother
+
+% 定义 Highlighting 环境（Pandoc 内部使用）
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  commandchars=\\\{\},
+  fontsize=\small,
+  baselinestretch=1,
+}
+
+% 定义 Pandoc 高亮命令
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.00,0.50}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.25,0.75}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.25,0.75}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.25,0.75}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.25,0.75}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.00,0.25,0.75}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.25,0.75}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+
+% =====================================================
+% 基本信息
+% =====================================================
+\title{时域积分方程时间步进算法及其快速算法}{The Time Marching Scheme of Time Domain Integral Equation and Corresponding Fast Algorithm}
+
+\author{王稳}{Wang Wen}                       
+\advisor{赖生建\chinesespace 副教授}{Dr. Shengjian Lai}   
+\school{物理电子学院}{School of Physical Electronics}   
+\major{无线电物理}{Radio Physics}          
+\studentnumber{201421040223}              
+
+% =====================================================
+\begin{document}
+
+% ===============================
+% 封面
+% ===============================
+\makecover
+
+% ===============================
+% 中文摘要
+% ===============================
+\begin{chineseabstract}
+……摘要(中文)
+
+\chinesekeyword{...关键词(中文)}
+\end{chineseabstract}
+
+% ===============================
+% 英文摘要
+% ===============================
+\begin{englishabstract}
+.....摘要(英文)
+
+\englishkeyword{...关键词(英文)}
+\end{englishabstract}
+
+% ===============================
+% 目录
+% ===============================
+\thesistableofcontents
+
+% ===============================
+% 正文章节
+% $body$ 用于 Pandoc 插入正文内容
+% ===============================
+$body$
+
+% ===============================
+% 致谢
+% ===============================
+\thesisacknowledgement
+...致谢词
+
+% ===============================
+% 附录
+% ===============================
+\thesisappendix
+
+\chapter{附录标题}           % 附录章标题
+\section{附录节标题}       % 附录节标题
+
+% ===============================
+% 参考文献
+% ===============================
+% 列出所有文献条目（即使未引用），取消下面注释
+\nocite{*}
+
+\thesisbibliography{reference}  % 模板自带命令加载参考文献
+% 使用原生 bibtex 命令示例：
+% \bibliographystyle{thesis-uestc}
+% \bibliography{reference}
+
+% ===============================
+% 论文成果
+% ===============================
+\thesisaccomplish{publications}
+...成果
+
+% ===============================
+% 外文资料原文
+% ===============================
+\thesistranslationoriginal
+外文资料原文
+
+% ===============================
+% 外文资料译文
+% ===============================
+\thesistranslationchinese
+外文资料译文
+
+\end{document}

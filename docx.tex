@@ -1,0 +1,95 @@
+% 综设报告:report|课程论文:course|学士论文:bachelor|硕士论文:master|博士论文:doctor
+\documentclass[master]{thesis-uestc}
+
+% ===============================
+% 基本信息
+% ===============================
+\title{时域积分方程时间步进算法及其快速算法}{The Time Marching Scheme of Time Domain Integral Equation and Corresponding Fast Algorithm}
+
+\author{王稳}{Wang Wen}                       % 作者信息
+\advisor{赖生建\chinesespace 副教授}{Dr. Shengjian Lai}   % 导师信息
+\school{物理电子学院}{School of Physical Electronics}   % 学院信息
+\major{无线电物理}{Radio Physics}          % 专业信息
+\studentnumber{201421040223}              % 学号
+
+\begin{document}
+
+% ===============================
+% 封面
+% ===============================
+\makecover
+
+% ===============================
+% 中文摘要
+% ===============================
+\begin{chineseabstract}
+……摘要(中文)
+
+\chinesekeyword{...关键词(中文)}
+\end{chineseabstract}
+
+% ===============================
+% 英文摘要
+% ===============================
+\begin{englishabstract}
+.....摘要(英文)
+
+\englishkeyword{...关键词(英文)}
+\end{englishabstract}
+
+% ===============================
+% 目录
+% ===============================
+\thesistableofcontents
+
+% ===============================
+% 正文章节
+% ===============================
+$body$
+
+% ===============================
+% 致谢
+% ===============================
+\thesisacknowledgement
+...致谢词
+
+% ===============================
+% 附录
+% ===============================
+\thesisappendix
+附录
+
+\chapter{附录标题}  % 附录章标题
+
+\section{附录节标题}  % 附录节标题
+
+% ===============================
+% 参考文献
+% ===============================
+% 如果想列出所有文献条目（即使未引用），取消下面注释
+\nocite{*}
+
+\thesisbibliography{your_reference}  % 使用模板自带命令加载参考文献
+% 如果使用原生 bibtex 命令，请使用以下方式：
+% \bibliographystyle{thesis-uestc}
+% \bibliography{reference}
+
+% ===============================
+% 论文成果
+% ===============================
+\thesisaccomplish{publications}
+...成果
+
+% ===============================
+% 外文资料原文
+% ===============================
+\thesistranslationoriginal
+外文资料原文
+
+% ===============================
+% 外文资料译文
+% ===============================
+\thesistranslationchinese
+外文资料译文
+
+\end{document}
