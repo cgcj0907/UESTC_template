@@ -62,6 +62,19 @@ xelatex main.tex      # 第三次编译最终完善目录
 
 ### 2.2 对已有 `markdown` | `word` 文件进行格式转换, 再用得到的 `tex` 生成 `pdf`
 > 先转换成 `tex`, <font color = "red">再运行 2.1 相同的命令</font>
+#### ! 执行命令前准备
+1. 切换到你的工作目录
+```bash
+cd your_workdirection
+```
+2. 保证要转换的文件与模板在同一目录下,如下图
+```bash
+\root
+|--\pic #图片资源
+|--template.tex
+|--yours.md
+|--yours.docx
+```
 #### Linux
 ```bash
 # markdown 文件
