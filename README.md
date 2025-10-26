@@ -211,6 +211,27 @@ FUNCTION {article}
 % xxxxx替换成你自己创建的bib文件,无需后缀,无需后缀,无效后缀!!!
 \thesisbibliography{xxxxx}
 ```
+* 如果论文题目较短, 导致有多余横线可以修改 `thesis-usetclcls`, 找到 `\newcommand{\makecover}`
+```diff
+\newcommand{\makecover}{
+
+  ...
+
+  \begin{tabular}{lp{4.2in}}
+    \bfseries\fontsize{18pt}{18pt}\selectfont 论文题目 & \multirow[t]{2}{4.2in}{
+        \centering
+          \bfseries\fontsize{18pt}{18pt}\selectfont
+          \zh@thetitle
+    } \\
+    \cline{2-2}
+-            & \\
+-    \cline{2-2}
+  \end{tabular}\hspace*{\fill} \\[\baselineskip]
+
+...
+
+}
+```
 * `tex` 中 `\begin{document}` 后不需要的内容删掉即可
 * ...欢迎补充
 
