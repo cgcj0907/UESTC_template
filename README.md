@@ -77,6 +77,10 @@ cd your_workdirection
 |--yours.md
 |--yours.docx
 ```
+
+3. 删除文档标号
+
+> 模板会自动添加标号,所以原文档无需重复标号
 #### Linux
 ```bash
 # markdown 文件
