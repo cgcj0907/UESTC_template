@@ -37,6 +37,7 @@ Compiled with pandoc-types 1.22, texmath 0.12.0.1, skylighting 0.11.0.1
 ### [Latex](https://www.latex-project.org/get/)
 #### For Windos
 * [安装包](https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe) <font color = "yellow">提示:安装时间较长</font>
+* 安装完后, 需在 `设置>系统>系统信息>高级系统设置>环境变量` 中配置用户变量, 在 `path` 中添加 `C:\texlive\2025\bin\windows`
 
 #### For Linux
 The installation of Latex maybe a llite difficult, you can follow the commands below, or you can click the link beyond and seek help from ChatGpt.
