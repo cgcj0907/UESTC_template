@@ -36,7 +36,7 @@ Compiled with pandoc-types 1.22, texmath 0.12.0.1, skylighting 0.11.0.1
 ```
 ### [Latex](https://www.latex-project.org/get/)
 #### For Windos
-* [安装包](https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe) <font color = "yellow">提示:安装时间较长</font>
+* [安装包](https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe) <font color = "yellow">提示: Latex 下载时间较慢,可以根据安装指导选择合适镜像</font>
 * 安装完后, 需在 `设置>系统>系统信息>高级系统设置>环境变量` 中配置用户变量, 在 `path` 中添加 `C:\texlive\2025\bin\windows`
 
 #### For Linux
@@ -54,17 +54,9 @@ e.g., /usr/local/texlive/2025/bin/x86_64-linux
 ## 2. 运行
 > 在此之前, 我建议你先阅读文件介绍, 有助于你理解命令
 
-### 2.1 原生 `tex` 文件转换成 `pdf`
-```bash
-# output.tex 只是一个示范, 需替换成你生成的 tex 文件
-xelatex output.tex      # 第一次编译生成 aux 文件
-bibtex output           # 处理参考文献
-xelatex output.tex      # 第二次编译更新引用
-xelatex output.tex      # 第三次编译最终完善目录
-```
+### 2.1 对已有 `markdown` | `word` 文件进行格式转换, 得到 `tex` 
 
-### 2.2 对已有 `markdown` | `word` 文件进行格式转换, 再用得到的 `tex` 生成 `pdf`
-> 先转换成 `tex`, <font color = "red">再运行 2.1 相同的命令</font>
+> 先转换成 `tex`, <font color = "red">再运行 2.2 相同的命令</font>
 #### ! 执行命令前准备
 1. 切换到你的工作目录
 ```bash
@@ -124,6 +116,15 @@ pandoc yours.md --from markdown --to latex --template=md.tex --output=output.tex
 
 # docx 文件
 pandoc yours.docx --from docx --to latex --template=docx.tex --output=output.tex --top-level-division=chapter
+```
+
+### 2.2 原生 `tex` 文件转换成 `pdf`
+```bash
+# output.tex 只是一个示范, 需替换成你生成的 tex 文件
+xelatex output.tex      # 第一次编译生成 aux 文件
+bibtex output           # 处理参考文献
+xelatex output.tex      # 第二次编译更新引用
+xelatex output.tex      # 第三次编译最终完善目录
 ```
 
 # 文件介绍
@@ -199,7 +200,6 @@ FUNCTION {article}
 
 # 注意事项
 
-* Latex 下载时间较慢,可以根据安装指导选择合适镜像
 * 仔细查看注解, 留意需替换的地方
 * 选择模板要对 `tex` 文件开头进行修改, 例如
 ```tex
