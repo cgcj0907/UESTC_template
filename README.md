@@ -16,6 +16,7 @@
 # 安装与运行
 
 ## 1. 安装
+> 个人推荐 `Windows` 环境, 因为 `Latex` 完整安装包大约 7GB
 ### [Pandoc](https://pandoc.org/installing.html)
 
 > <font color="red">!</font> For the newest version, you should follow the link beyond.
