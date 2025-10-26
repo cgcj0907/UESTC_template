@@ -56,10 +56,11 @@ e.g., /usr/local/texlive/2025/bin/x86_64-linux
 
 ### 2.1 原生 `tex` 文件转换成 `pdf`
 ```bash
-xelatex main.tex      # 第一次编译生成 aux 文件
-bibtex main           # 处理参考文献
-xelatex main.tex      # 第二次编译更新引用
-xelatex main.tex      # 第三次编译最终完善目录
+# output.tex 只是一个示范, 需替换成你生成的 tex 文件
+xelatex output.tex      # 第一次编译生成 aux 文件
+bibtex output           # 处理参考文献
+xelatex output.tex      # 第二次编译更新引用
+xelatex output.tex      # 第三次编译最终完善目录
 ```
 
 ### 2.2 对已有 `markdown` | `word` 文件进行格式转换, 再用得到的 `tex` 生成 `pdf`
@@ -81,6 +82,22 @@ cd your_workdirection
 3. 删除文档标号
 
 > 模板会自动添加标号,所以原文档无需重复标号
+
+
+4. 将文献存入bib文件(如果有文献需求),格式参见 `reference.bib`
+```
+@article{wang1999sanwei,
+  title = {三维矢量散射积分方程中奇异性分析},
+  author = {王浩刚 and 聂在平},
+  journal = {电子学报},
+  volume = {27},
+  number = {12},
+  pages = {68 -- 71},
+  year = {1999}
+}
+```
+
+5. 仔细阅读<a href="#注意事项">注意事项</a>, 仔细阅读<a href="#注意事项">注意事项</a>, 仔细阅读<a href="#注意事项">注意事项</a>!!!
 #### Linux
 ```bash
 # markdown 文件
@@ -88,7 +105,7 @@ pandoc yours.md \
   --from markdown \
   --to latex \
   --template=md.tex \ # 模板文件
-  --output=your_md.tex \ # 输出文件
+  --output=output.tex \ # 输出文件
   --top-level-division=chapter
 
 # docx 文件
@@ -96,17 +113,17 @@ pandoc yours.docx \
   --from docx \
   --to latex \
   --template=docx.tex \ 
-  --output=your_docx.tex \
+  --output=output.tex \
   --top-level-division=chapter 
 ```
 
 #### Windows
 ```bash
 # markdown 文件
-pandoc yours.md --from markdown --to latex --template=your_md.tex --output=your_md_final.tex --top-level-division=chapter 
+pandoc yours.md --from markdown --to latex --template=md.tex --output=output.tex --top-level-division=chapter 
 
 # docx 文件
-pandoc yours.docx --from docx --to latex --template=your_docx.tex --output=your_docx_final.tex --top-level-division=chapter
+pandoc yours.docx --from docx --to latex --template=docx.tex --output=output.tex --top-level-division=chapter
 ```
 
 # 文件介绍
@@ -184,6 +201,17 @@ FUNCTION {article}
 
 * Latex 下载时间较慢,可以根据安装指导选择合适镜像
 * 仔细查看注解, 留意需替换的地方
+* 选择模板要对 `tex` 文件开头进行修改, 例如
+```tex
+\documentclass[master]{thesis-uestc} % 博士论文
+\documentclass[course]{thesis-uestc} % 课程论文
+```
+* 引用文献需在 `tex` 文件中修改如下代码
+```tex
+% xxxxx替换成你自己创建的bib文件,无需后缀,无需后缀,无效后缀!!!
+\thesisbibliography{xxxxx}
+```
+* `tex` 中 `\begin{document}` 后不需要的内容删掉即可
 * ...欢迎补充
 
 # 特别感谢
