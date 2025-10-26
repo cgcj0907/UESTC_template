@@ -7,7 +7,7 @@
 - [个性化设计](#个性化设计)
 - [注意事项](#注意事项)
 - [特别感谢](#特别感谢)
-- [在线 PDF 转 docx 网站](#在线 PDF 转 docx 网站)
+- [在线 PDF 转 docx 网站](#在线网站)
 
 # 项目简介
 本项目基于 `pandoc` 和 `Latex` 构建, 通过该模板可快速排版符合 UESTC 要求的论文,包括课程论文-综设报告-学位论文
@@ -185,7 +185,7 @@ FUNCTION {article}
 # 特别感谢
   王稳师兄以及 `Overleaf` 提供的模板
 
-# 在线 PDF 转 docx 网站
+# 在线网站
 
 * [Smallpdf](https://smallpdf.com/cn/pdf-to-word)
 * [ILovepdf](https://www.ilovepdf.com/pdf_to_word)  
