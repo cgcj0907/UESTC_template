@@ -655,7 +655,7 @@
 }
 
 \newcommand{\makecover}{
-\ifreport{}{
+\ifreport{\makereportcover}{
   \thispagestyle{empty}
   \setlength{\extrarowheight}{9pt}
   \ifchinesebook{\pdfbookmark{封面}{cover}}{\pdfbookmark{Cover}{cover}}
@@ -707,6 +707,97 @@
   \setcounter{page}{1}
   \setlength{\extrarowheight}{2pt}
 }
+}
+
+%--------------------------------------------------------------%
+%-----------------------report cover 定义----------------------%
+%--------------------------------------------------------------%
+% 定义课题参数
+\newcommand{\zh@thecoursename}{挑战性项目xx}
+\newcommand{\zh@thesemeter}{20xx-20xx学年第x学期}
+\newcommand{\zh@thetopicname}{课题名称}
+
+% 定义课题传参函数
+\newcommand{\coursename}[1]{
+  \renewcommand{\zh@thecoursename}{#1}
+}
+\newcommand{\semeter}[1]{
+  \renewcommand{\zh@thesemeter}{#1}
+}
+\newcommand{\topicname}[1]{
+  \renewcommand{\zh@thetopicname}{#1}
+}
+
+% 定义学生参数
+\newcommand{\studentone}{1（组长） &  & \\ \hline} 
+\newcommand{\studenttwo}{2 &  & \\ \hline} 
+\newcommand{\studentthree}{3 &  &  \\ \hline}
+\newcommand{\studentfour}{4 &  &  \\ \hline}
+\newcommand{\studentfive}{5 &  &  \\ \hline}
+\newcommand{\studentsix}{6 &  &  \\ \hline}
+
+% 定义学生传参函数
+\newcommand{\setstudentone}[2]{\renewcommand{\studentone}{1（组长） & #1 & #2 \\ \hline}}
+\newcommand{\setstudenttwo}[2]{\renewcommand{\studenttwo}{2 & #1 & #2 \\ \hline}}
+\newcommand{\setstudentthree}[2]{\renewcommand{\studentthree}{3 & #1 & #2 \\ \hline}}
+\newcommand{\setstudentfour}[2]{\renewcommand{\studentfour}{4 & #1 & #2 \\ \hline}}
+\newcommand{\setstudentfive}[2]{\renewcommand{\studentfive}{5 & #1 & #2 \\ \hline}}
+\newcommand{\setstudentsix}[2]{\renewcommand{\studentsix}{6 & #1 & #2 \\ \hline}}
+
+
+\newcommand{\makereportcover}{
+\thispagestyle{empty}
+\begin{center}
+\includegraphics[width=1.98611in,height=1.5in]{logo-report.pdf}\\[2em]
+{\fontsize{28pt}{32pt}\selectfont \textbf{信息与软件工程学院}}\\[2em]
+{\fontsize{28pt}{32pt}\selectfont \textbf{挑战性项目II总结报告}}\\[2em]
+\end{center}
+
+  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{3.77in}p{15pt}}
+    课程名称: & \zh@thecoursename &\\
+    \cline{2-2}
+    \\[0.5em]
+    所在系别: & \zh@theschool &\\
+    \cline{2-2}
+    \\[0.5em]
+    学\chinesespace\chinesespace 期: & \zh@thesemeter &\\
+    \cline{2-2}
+    \\[0.5em]
+    课题名称: & \zh@thetopicname &\\
+    \cline{2-2}
+    \\[0.5em]
+    指导教师: & \zh@theadvisor &\\
+    \cline{2-2}
+    \\[0.5em]
+    学生信息: &  &\\
+  \end{tabular}
+
+\begin{longtable}{|
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2322}}|
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4107}}|
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3571}}|
+}
+\hline
+序号 & 学号 & 姓名 \\
+\hline
+\endhead
+\hline
+序号 & 学号 & 姓名 \\
+\hline
+\endfoot
+\hline
+\endlastfoot
+% 依次调用每行
+\studentone
+\studenttwo
+\studentthree
+\studentfour
+\studentfive
+\studentsix
+\end{longtable}
+
 }
 
 \newcommand{\thetitlepage}{

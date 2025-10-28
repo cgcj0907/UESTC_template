@@ -211,19 +211,53 @@ FUNCTION {article}
 % xxxxx替换成你自己创建的bib文件,无需后缀,无需后缀,无效后缀!!!
 \thesisbibliography{xxxxx}
 ```
-* 如果使用 `report` 模板(针对信软的同学), 需自行添加封面 `report-cover.docx` (还在开发中), 页眉的修改可在 `thesis-uestc.cls`
-```diff
-\DeclareOption{report}{
-  \def\chinesedegreename{报告}
-  \def\englishdegreename{Report}
-  \def\chinesebooktitle{综设报告}
-  \def\englishbooktitle{Design Report}
--  \def\display@chineseheader{信软学院进阶式挑战性项目 III 中期报告}
-+  \def\display@chineseheader{你本学期的项目报告名称}
-  \def\display@englishheader{Design Report of University ofReport
-    Electronic Science and Technology of China}
-}
-```
+* 如果使用 `report` 模板(针对信软的同学), 需自行添加封面 `report-cover.docx`, 或者用我写的模板代码生成(与学院稍有出入,因为学院的格式也不规范,没给准确行距)
+  * 若用模板生成切记将 `tex` 文件中的基本信息格式替换如下
+  ```tex
+  % 作者姓名（中文、英文可选，第二参数通常留空即可）
+  \author{钟光阳}{}
+
+  % 指导教师，可填多个，用逗号隔开
+  \advisor{王晓霆, 王曾晖}{}
+
+  % 学期信息
+  \semeter{2023-2024学年第1学期}
+
+  % 所在学院（中英文）
+  \school{信息与软件工程学院}{School of Information and Software Engineering}
+
+  % 课题名称
+  \topicname{基于 Linux 内核的轻量级操作系统}
+
+  % =============================
+  % 学生小组信息填写区域
+  % 若无成员则留空，下方保留即可
+  % =============================
+
+  % 第一位默认组长
+  \setstudentone{2023090903005}{钟光阳}
+
+  % 其他成员（可按需填写或留空）
+  \setstudenttwo{}{}
+  \setstudentthree{}{}
+  \setstudentfour{}{}
+  \setstudentfive{}{}
+  \setstudentsix{}{}
+  ```
+
+  * 页眉的修改可在 `thesis-uestc.cls`
+  ```diff
+  \DeclareOption{report}{
+    \def\chinesedegreename{报告}
+    \def\englishdegreename{Report}
+    \def\chinesebooktitle{综设报告}
+    \def\englishbooktitle{Design Report}
+  -  \def\display@chineseheader{信软学院进阶式挑战性项目 III 中期报告}
+  +  \def\display@chineseheader{你本学期的项目报告名称}
+    \def\display@englishheader{Design Report of University ofReport
+      Electronic Science and Technology of China}
+  }
+  ```
 * 如果论文题目较短, 导致有多余横线可以修改 `thesis-usetclcls`, 找到 `\newcommand{\makecover}`
 ```diff
 \newcommand{\makecover}{
