@@ -37,7 +37,7 @@ Compiled with pandoc-types 1.22, texmath 0.12.0.1, skylighting 0.11.0.1
 ### [Latex](https://www.latex-project.org/get/)
 #### For Windos
 * [安装包](https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe) <font color = "yellow">提示: Latex 下载时间较慢,可以根据安装指导选择合适镜像</font>
-* 安装完后, 需在 `设置>系统>系统信息>高级系统设置>环境变量` 中配置用户变量, 在 `path` 中添加 `C:\texlive\2025\bin\windows`
+* 安装完后, 需在 `设置>系统>系统信息>高级系统设置>环境变量` 中配置用户变量, 在 `path` 中添加 `C:\texlive\2025\bin\windows` (默认情况下是这个路径,实际会根据你的安装路径改变)
 
 #### For Linux
 The installation of Latex maybe a llite difficult, you can follow the commands below, or you can click the link beyond and seek help from ChatGpt.
@@ -116,6 +116,18 @@ pandoc yours.md --from markdown --to latex --template=md.tex --output=output.tex
 
 # docx 文件
 pandoc yours.docx --from docx --to latex --template=docx.tex --output=output.tex --top-level-division=chapter
+```
+
+#### 执行命令后操作(针对有图片的文档)
+1. 找到生成的 `output.tex` (默认情况下)
+2. 可以用 `ctrl` + `f` 查找 `\includegraphics`, 下面演示如何正确替换代码
+```diff
+# 默认情况下生成的路径是找不到的如下
+- \includegraphics[width=5.83333in,height=3.88965in]{media/rId20.jpg}
+# 我们要将第二个括号里的路径改成我们存放在 \pic 目录下的文件名
+# 例如在 \pic 下有 example.pdf, 即 \pic\example.pdf
+# 正确代码如下
++ \includegraphics[width=5.83333in,height=3.88965in]{example.pdf}
 ```
 
 ### 2.2 原生 `tex` 文件转换成 `pdf`
