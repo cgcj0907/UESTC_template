@@ -468,6 +468,10 @@
     Electronic Science and Technology of China}
 }
 
+\newcommand{\ifmaster}[2]{
+  \ifthenelse{\equal{\englishdegreename}{Master}}{#1}{#2}
+}
+
 \DeclareOption{promaster}{
   \def\chinesedegreename{专业硕士}
   \def\englishdegreename{Professional Master}
@@ -476,6 +480,10 @@
   \def\display@chineseheader{电子科技大学硕士学位论文}
   \def\display@englishheader{Professional Master Thesis of University 
     of Electronic Science and Technology of China}
+}
+
+\newcommand{\ifpromaster}[2]{
+  \ifthenelse{\equal{\englishdegreename}{Professional Master}}{#1}{#2}
 }
 
 \DeclareOption{doctor}{
@@ -488,6 +496,10 @@
     Electronic Science and Technology of China}
 }
 
+\newcommand{\ifdoctor}[2]{
+  \ifthenelse{\equal{\englishdegreename}{Doctor}}{#1}{#2}
+}
+
 \DeclareOption{engdoctor}{
   \def\chinesedegreename{工程博士}
   \def\englishdegreename{Engineering Doctor}
@@ -496,6 +508,10 @@
   \def\display@chineseheader{电子科技大学博士学位论文}
   \def\display@englishheader{Engineering Doctoral Dissertation of
     University of Electronic Science and Technology of China}
+}
+
+\newcommand{\ifengdoctor}[2]{
+  \ifthenelse{\equal{\englishdegreename}{EngineeringDoctor}}{#1}{#2}
 }
 
 \ExecuteOptions{master}
@@ -639,59 +655,58 @@
 }
 
 \newcommand{\makecover}{
-\thispagestyle{empty}
-\setlength{\extrarowheight}{9pt}
-\ifchinesebook{\pdfbookmark{封面}{cover}}{\pdfbookmark{Cover}{cover}}
-\begin{center}
-  \ifbachelor{\includegraphics{bachelor_font.pdf} \\}{
-    \fontsize{22pt}{22pt}\selectfont 电\hspace{0.5em}子\hspace{0.5em}科\hspace{0.5em}技%
-    \hspace{0.5em}大\hspace{0.5em}学 \\[7bp]}
-  \fontsize{12pt}{12pt}\selectfont UNIVERSITY OF ELECTRONIC SCIENCE
-    AND TECHNOLOGY OF CHINA \\[36bp]
-  \ifbachelor{\fontsize{42pt}{42pt}\selectfont{\bfseries\chinesebooktitle} \\[24bp]}{
-    \fontsize{42pt}{42pt}\selectfont\chinesebooktitle \\[24bp]}
-  \fontsize{16pt}{16pt}\selectfont
-    \textnormal{\MakeUppercase{\englishbooktitle}} \\[48bp]
-  \ifbachelor{
-    % \vspace{0.4cm}
-    \includegraphics[width=180bp]{logo.pdf} \\[40bp]
-  }{\includegraphics[width=180bp]{logo.pdf} \\[40bp]}
-  \begin{tabular}{lp{4.2in}}
-    \bfseries\fontsize{18pt}{18pt}\selectfont 论文题目 & \multirow[t]{2}{4.2in}{
-        \centering
-          \bfseries\fontsize{18pt}{18pt}\selectfont
-          \zh@thetitle
-    } \\
-    \cline{2-2}
-            & \\
-    \cline{2-2}
-  \end{tabular}\hspace*{\fill} \\[\baselineskip]
-  \begin{tabular}{>{\bfseries\fontsize{16pt}{16pt}\selectfont}l
-      >{\centering\arraybackslash\bfseries\fontsize{16pt}{16pt}\selectfont}
-      p{3.77in}p{15pt}}
-    学科专业 & \zh@themajor &\\
-    \cline{2-2}
-    学\chinesespace\chinesespace 号 & \thestudentnumber & \\
-    \cline{2-2}
-    作者姓名 & \zh@theauthor &\\
-    \cline{2-2}
-    指导老师 & \zh@theadvisor &\\
-    \cline{2-2}
-    学\chinesespace\chinesespace 院 & \zh@theschool &\\
-    \cline{2-2}
-  \end{tabular}
-\end{center}
+\ifreport{}{
+  \thispagestyle{empty}
+  \setlength{\extrarowheight}{9pt}
+  \ifchinesebook{\pdfbookmark{封面}{cover}}{\pdfbookmark{Cover}{cover}}
+  \begin{center}
+    \ifbachelor{\includegraphics{bachelor_font.pdf} \\}{
+      \fontsize{22pt}{22pt}\selectfont 电\hspace{0.5em}子\hspace{0.5em}科\hspace{0.5em}技%
+      \hspace{0.5em}大\hspace{0.5em}学 \\[7bp]}
+    \fontsize{12pt}{12pt}\selectfont UNIVERSITY OF ELECTRONIC SCIENCE
+      AND TECHNOLOGY OF CHINA \\[36bp]
+    \ifbachelor{\fontsize{42pt}{42pt}\selectfont{\bfseries\chinesebooktitle} \\[24bp]}{
+      \fontsize{42pt}{42pt}\selectfont\chinesebooktitle \\[24bp]}
+    \fontsize{16pt}{16pt}\selectfont
+      \textnormal{\MakeUppercase{\englishbooktitle}} \\[48bp]
+    \ifbachelor{
+      % \vspace{0.4cm}
+      \includegraphics[width=180bp]{logo.pdf} \\[40bp]
+    }{\includegraphics[width=180bp]{logo.pdf} \\[40bp]}
+    \begin{tabular}{lp{4.2in}}
+      \bfseries\fontsize{18pt}{18pt}\selectfont 论文题目 & \multirow[t]{2}{4.2in}{
+          \centering
+            \bfseries\fontsize{18pt}{18pt}\selectfont
+            \zh@thetitle
+      } \\
+      \cline{2-2}
+              & \\
+      \cline{2-2}
+    \end{tabular}\hspace*{\fill} \\[\baselineskip]
+    \begin{tabular}{>{\bfseries\fontsize{16pt}{16pt}\selectfont}l
+        >{\centering\arraybackslash\bfseries\fontsize{16pt}{16pt}\selectfont}
+        p{3.77in}p{15pt}}
+      学科专业 & \zh@themajor &\\
+      \cline{2-2}
+      学\chinesespace\chinesespace 号 & \thestudentnumber & \\
+      \cline{2-2}
+      作者姓名 & \zh@theauthor &\\
+      \cline{2-2}
+      指导老师 & \zh@theadvisor &\\
+      \cline{2-2}
+      学\chinesespace\chinesespace 院 & \zh@theschool &\\
+      \cline{2-2}
+    \end{tabular}
+  \end{center}
+  \ifmaster{\thetitlepage}{} 
+  \ifpromaster{\thetitlepage}{} 
+  \ifdoctor{\thetitlepage}{} 
+  \ifengdoctor{\thetitlepage}{}
 
-\ifbachelor{}{
-  \ifreport{}{
-    \ifcourse{}{\thetitlepage} 
-  }
+  \newpage
+  \setcounter{page}{1}
+  \setlength{\extrarowheight}{2pt}
 }
-
-
-\newpage
-\setcounter{page}{1}
-\setlength{\extrarowheight}{2pt}
 }
 
 \newcommand{\thetitlepage}{

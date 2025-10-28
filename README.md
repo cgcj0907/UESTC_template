@@ -21,7 +21,7 @@
 
 > <font color="red">!</font> For the newest version, you should follow the link beyond.
 #### For Windows
-* [安装地址](https://github.com/jgm/pandoc/releases/tag/3.8.2.1)
+* [安装地址](https://github.com/jgm/pandoc/releases/tag/3.8.2.1)(选择符合自己电脑版本的安装包)
 #### For Linux
 ```bash
 sudo apt update
@@ -211,6 +211,19 @@ FUNCTION {article}
 % xxxxx替换成你自己创建的bib文件,无需后缀,无需后缀,无效后缀!!!
 \thesisbibliography{xxxxx}
 ```
+* 如果使用 `report` 模板(针对信软的同学), 需自行添加封面 `report-cover.docx` (还在开发中), 页眉的修改可在 `thesis-uestc.cls`
+```diff
+\DeclareOption{report}{
+  \def\chinesedegreename{报告}
+  \def\englishdegreename{Report}
+  \def\chinesebooktitle{综设报告}
+  \def\englishbooktitle{Design Report}
+-  \def\display@chineseheader{信软学院进阶式挑战性项目 III 中期报告}
++  \def\display@chineseheader{你本学期的项目报告名称}
+  \def\display@englishheader{Design Report of University ofReport
+    Electronic Science and Technology of China}
+}
+```
 * 如果论文题目较短, 导致有多余横线可以修改 `thesis-usetclcls`, 找到 `\newcommand{\makecover}`
 ```diff
 \newcommand{\makecover}{
@@ -231,6 +244,20 @@ FUNCTION {article}
 ...
 
 }
+```
+* 若第一章的页眉不希望是`绪论`可以更改 `thesis-uestc.cls` 以下部分代码
+```diff
+\apptocmd{\@chapter}{
+  \ifdefined\@BODY
+  \else
+    \ifnum\value{chapter}=1
+-      \ifchinesebook{\chaptermark{绪论}}{\chaptermark{Introduction}}
++      \ifchinesebook{\chaptermark{你自己的标题}}{\chaptermark{Introduction}}
+      \setcounter{page}{1}
+    \fi
+  \fi
+  \def\@BODY{\null}
+}{}{}
 ```
 * `tex` 中 `\begin{document}` 后不需要的内容删掉即可
 * ...欢迎补充
