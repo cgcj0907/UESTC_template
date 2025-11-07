@@ -256,7 +256,11 @@ FUNCTION {article}
   \setstudentfive{}{}
   \setstudentsix{}{}
   ```
-
+  * 将 `tex` 文件中的 `\makecover` 改为 `\makereportcover`
+  ```diff
+  - \makecover
+  + \makereportcover
+  ```
   * 页眉的修改可在 `thesis-uestc.cls`
   ```diff
   \DeclareOption{report}{
